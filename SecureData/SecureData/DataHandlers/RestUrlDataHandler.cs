@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SecureData.DataHandlers
 {
-    public class CRestUrlDataHandler : IDataHandler
+    public class RestUrlDataHandler : IDataHandler
     {
-        public override void getSecuredData(string data)
+        public override void GetSecuredData(string data)
         {
             throw new NotImplementedException();
         }

@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace SecureData.DataHandlers
 {
-    public class CJsonDataHandler : IDataHandler
+    public class JsonDataHandler : IDataHandler
     {
-        public override void getSecuredData(string data)
+        public override void GetSecuredData(string data)
         {
-            throw new NotImplementedException();
+            JavaScriptSerializer j = new JavaScriptSerializer();
+            Dictionary<string, string> a = j.Deserialize<Dictionary<string, string>>(data);
+
+            foreach (string prop in properties)
+            {
+                //string securedValue = new String('X', a);
+
+            }
         }
     }
 }

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace SecureData.DataHandlers
 {
-    class CUrlDataHandler
+    public class UrlDataHandler : IDataHandler
     {
+        public override void GetSecuredData(string data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
