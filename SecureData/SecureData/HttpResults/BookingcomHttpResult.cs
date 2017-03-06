@@ -10,16 +10,17 @@ namespace SecureData.HttpResults
 {
     class BookingcomHttpResult : IHttpResult
     {
-        protected override void initHandlers()
+        protected override void InitHandlers()
         {
-            UrlHandler = new UrlDataHandler();
-            RequestBodyHandler = new RestUrlDataHandler();
-            ResponseBodyHandler = new RestUrlDataHandler();
+            UrlHandler = new RestUrlDataHandler();
+            RequestBodyHandler = new UrlGetRequestDataHandler();
+            ResponseBodyHandler = new UrlGetRequestDataHandler();
         }
 
-        protected override void initProperties()
+        protected override void InitProperties()
         {
-            throw new NotImplementedException();
+            InitProperties(
+                new string[] { "user", "pass" });
         }
     }
 }
