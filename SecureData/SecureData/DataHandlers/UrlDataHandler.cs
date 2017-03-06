@@ -7,7 +7,7 @@ using System.Web;
 
 namespace SecureData.DataHandlers
 {
-    public class UrlDataHandler : IDataHandler
+    public class UrlGetRequestDataHandler : IDataHandler
     {
         public override string GetSecuredData(string data)
         {

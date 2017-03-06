@@ -25,7 +25,7 @@ namespace SecureData.DataHandlers
                 }
             }
 
-            UrlDataHandler urlDataHandler = new UrlDataHandler();
+            UrlGetRequestDataHandler urlDataHandler = new UrlGetRequestDataHandler();
             urlDataHandler.properties = this.properties;
             return urlDataHandler.GetSecuredData(String.Join("/", splitedUrl));
         }
