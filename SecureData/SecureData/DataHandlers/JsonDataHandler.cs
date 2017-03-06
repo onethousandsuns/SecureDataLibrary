@@ -9,16 +9,22 @@ namespace SecureData.DataHandlers
 {
     public class JsonDataHandler : IDataHandler
     {
-        public override void GetSecuredData(string data)
+        public override string GetSecuredData(string data)
         {
-            JavaScriptSerializer j = new JavaScriptSerializer();
-            Dictionary<string, string> a = j.Deserialize<Dictionary<string, string>>(data);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            Dictionary<string, string> dataDict = serializer.Deserialize<Dictionary<string, string>>(data);
 
-            foreach (string prop in properties)
+            foreach (string key in properties)
             {
-                //string securedValue = new String('X', a);
-
+                if (dataDict.ContainsKey(key))
+                {
+                    string securedValue = new String('X', dataDict[key].Length);
+                    dataDict[key] = securedValue;
+                }
             }
+            string result = serializer.Serialize(dataDict);
+
+            return result;
         }
     }
 }

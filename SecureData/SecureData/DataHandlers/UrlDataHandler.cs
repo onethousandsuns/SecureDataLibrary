@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SecureData.DataHandlers
 {
     public class UrlDataHandler : IDataHandler
     {
-        public override void GetSecuredData(string data)
+        public override string GetSecuredData(string data)
         {
-            throw new NotImplementedException();
+            Uri uri = new Uri(data);
+            var queryString = HttpUtility.ParseQueryString(uri.Query);
+
+            foreach (string key in properties)
+            {
+                string param = queryString.Get(key);
+                if(param != null)
+                {
+                    string securedValue = new String('X', param.Length);
+                    queryString.Set(key, securedValue);
+                }
+            }
+            var uriBuilder = new UriBuilder(uri);
+            uriBuilder.Query = queryString.ToString();
+
+            return uriBuilder.Uri.ToString();
         }
     }
 }

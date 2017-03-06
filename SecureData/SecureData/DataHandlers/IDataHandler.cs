@@ -8,7 +8,7 @@ namespace SecureData.DataHandlers
 {
     public abstract class IDataHandler
     {
-        public abstract void GetSecuredData(string data);
+        public abstract string GetSecuredData(string data);
 
         public string[] properties { get; set; }
     }
