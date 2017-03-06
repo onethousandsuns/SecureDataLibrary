@@ -12,14 +12,30 @@ namespace SecureData
         protected IDataHandler UrlHandler { set; get; }
         protected IDataHandler RequestBodyHandler { set; get; }
         protected IDataHandler ResponseBodyHandler { set; get; }
- 
-        public void getSecuredData()
-        {
 
+        public IHttpResult()
+        {
+            InitHandlers();
+            InitProperties();
         }
 
-        protected abstract void initProperties();
+        public HttpResult GetSecuredResult(HttpResult httpRes)
+        {
+            HttpResult result = new HttpResult();
+            result.Url = UrlHandler.GetSecuredData(httpRes.Url);
+            result.ResponseBody = UrlHandler.GetSecuredData(httpRes.ResponseBody);
+            result.RequestBody = UrlHandler.GetSecuredData(httpRes.RequestBody);
+            return result;
+        }
 
-        protected abstract void initHandlers();
+        protected void InitProperties(string[] securedProps)
+        {
+            UrlHandler.properties = securedProps;
+            RequestBodyHandler.properties = securedProps;
+            ResponseBodyHandler.properties = securedProps;
+        }
+
+        protected abstract void InitProperties();
+        protected abstract void InitHandlers();
     }
 }
