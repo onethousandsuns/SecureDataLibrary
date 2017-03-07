@@ -11,5 +11,20 @@ namespace SecureData
         public string Url { get; set; }
         public string RequestBody { get; set; }
         public string ResponseBody { get; set; }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is HttpResult)
+            {
+                var that = obj as HttpResult;
+                return true;
+            }
+            return false;
+        }
     }
 }
