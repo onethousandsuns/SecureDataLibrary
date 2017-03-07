@@ -22,6 +22,9 @@ namespace SecureData
             if (obj is HttpResult)
             {
                 var that = obj as HttpResult;
+                if ((Url == that.Url)
+                    && (RequestBody == that.RequestBody)
+                    && (ResponseBody == that.ResponseBody))
                 return true;
             }
             return false;
