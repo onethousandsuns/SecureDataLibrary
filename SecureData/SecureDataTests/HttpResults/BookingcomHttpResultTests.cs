@@ -13,7 +13,7 @@ namespace SecureData.Tests
     public class BookingcomHttpResultTests
     {
         [TestMethod()]
-        public void BookingcomHttpResult_GetSecuredDataTest_Process_EmptySecuredProps_NonChangedResult()
+        public void BookingcomHttpResult_GetSecuredDataTest_Process_NonEmptySecuredProps_ParametresSecured()
         {
             IHttpResult handler = new BookingcomHttpResult();
 
@@ -21,7 +21,7 @@ namespace SecureData.Tests
             {
                 Url = "http://test.com/user/XXX/info?pass=XXXXXX",
                 RequestBody = "http://test.com?user=XXX&pass=XXXXXX",
-                ResponseBody = "http://tet.com?user=XXX&pass=XXXXXX"
+                ResponseBody = "http://test.com?user=XXX&pass=XXXXXX"
             };
 
             var data = new HttpResult
@@ -33,7 +33,7 @@ namespace SecureData.Tests
 
             var result = handler.GetSecuredResult(data);
 
-            Assert.ReferenceEquals(expectedResult, result);
+            Assert.AreEqual(expectedResult, result);
         }
     }
 }
