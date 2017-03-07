@@ -13,6 +13,7 @@ namespace SecureData.DataHandlers
         {
             Uri uri = new Uri(data);
             var queryString = HttpUtility.ParseQueryString(uri.Query);
+            var urlPath = data.Replace(queryString.ToString(), "");
 
             foreach (string key in properties)
             {
@@ -23,10 +24,8 @@ namespace SecureData.DataHandlers
                     queryString.Set(key, securedValue);
                 }
             }
-            var uriBuilder = new UriBuilder(uri);
-            uriBuilder.Query = queryString.ToString();
 
-            return uriBuilder.Uri.ToString();
+            return urlPath + queryString.ToString();
         }
     }
 }
