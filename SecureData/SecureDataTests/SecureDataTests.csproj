@@ -50,8 +50,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DataHandlersTests.cs" />
+    <Compile Include="DataHandlers\JsonDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\RestUrlDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\UrlGetRequestDataHandlerTests.cs" />
+    <Compile Include="HttpResults\BookingcomHttpResultTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SecureData\SecureData.csproj">
+      <Project>{00735B63-943A-4F08-AF56-26F067C79711}</Project>
+      <Name>SecureData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
