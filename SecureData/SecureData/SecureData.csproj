@@ -49,6 +49,7 @@
     <Compile Include="DataHandlers\RestUrlDataHandler.cs" />
     <Compile Include="DataHandlers\UrlGetRequestDataHandler.cs" />
     <Compile Include="DataHandlers\IDataHandler.cs" />
+    <Compile Include="HttpLogHandler.cs" />
     <Compile Include="HttpResult.cs" />
     <Compile Include="HttpResults\BookingcomHttpResult.cs" />
     <Compile Include="HttpResults\IHttpResult.cs" />
