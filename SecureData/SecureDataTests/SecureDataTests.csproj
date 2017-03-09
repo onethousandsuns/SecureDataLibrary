@@ -53,6 +53,7 @@
     <Compile Include="DataHandlers\JsonDataHandlerTests.cs" />
     <Compile Include="DataHandlers\RestUrlDataHandlerTests.cs" />
     <Compile Include="DataHandlers\UrlGetRequestDataHandlerTests.cs" />
+    <Compile Include="HttpLogHandlerTests.cs" />
     <Compile Include="HttpResults\BookingcomHttpResultTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
