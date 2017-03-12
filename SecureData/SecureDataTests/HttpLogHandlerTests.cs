@@ -62,5 +62,41 @@ namespace SecureDataTests
 
             Assert.AreEqual(expectedResult, httpLogHandler.GetCurrentLog());
         }
+
+        [TestMethod()]
+        public void HttpLogHandler_Process_AgodaHttpResultHandle_ClearSecureData()
+        {
+            //ARRANGE
+            var handler = new AgodaHttpResultDataHandler();
+            HttpLogHandler httpLogHandler = new HttpLogHandler();
+
+            var data = new HttpResult
+            {
+                Url = "http://test.com?user=max&pass=123456",
+                RequestBody = @"
+                <auth>
+                    <user>max</user>
+                    <pass>123456</pass>
+                </auth>",
+                ResponseBody = "<auth user=\"max\" pass=\"123456\">"
+            };
+
+            //ACT
+            httpLogHandler.Process(data, handler);
+
+            //ASSERT
+            var expectedResult = new HttpResult
+            {
+                Url = "http://test.com?user=XXX&pass=XXXXXX",
+                RequestBody = @"
+                <auth>
+                    <user>XXX</user>
+                    <pass>XXXXXX</pass>
+                </auth>",
+                ResponseBody = "<auth user=\"XXX\" pass=\"XXXXXX\">"
+            };
+
+            Assert.AreEqual(expectedResult, httpLogHandler.GetCurrentLog());
+        }
     }
 }
