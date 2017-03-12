@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SecureData.HttpResults;
+using SecureData.HttpResultsDataHandlers;
 
 namespace SecureData.Tests
 {
@@ -15,7 +15,7 @@ namespace SecureData.Tests
         [TestMethod()]
         public void BookingcomHttpResult_GetSecuredDataTest_Process_NonEmptySecuredProps_ParametresSecured()
         {
-            IHttpResult handler = new BookingcomHttpResult();
+            IHttpResultDataHandler handler = new BookingcomHttpResultDataHandler();
 
             var expectedResult = new HttpResult
             {

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using SecureData.DataHandlers;
 
 
-namespace SecureData.HttpResults
+namespace SecureData.HttpResultsDataHandlers
 {
-    public class BookingcomHttpResult : IHttpResult
+    public class BookingcomHttpResultDataHandler : IHttpResultDataHandler
     {
         protected override void InitHandlers()
         {

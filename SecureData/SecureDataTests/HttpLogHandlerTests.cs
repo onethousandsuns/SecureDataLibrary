@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SecureData.HttpResults;
+using SecureData.HttpResultsDataHandlers;
 
 namespace SecureData.Tests
 {
@@ -16,7 +16,7 @@ namespace SecureData.Tests
         public void HttpLogHandler_Process_BookingcomHttpResultObjectProcess_ClearSecureData()
         {
             //ARRANGE
-            IHttpResult bookingcomHttpHandler = new BookingcomHttpResult();
+            IHttpResultDataHandler bookingcomHttpHandler = new BookingcomHttpResultDataHandler();
             HttpLogHandler httpLogHandler = new HttpLogHandler(bookingcomHttpHandler);
 
             var data = new HttpResult
@@ -44,7 +44,7 @@ namespace SecureData.Tests
         public void HttpLogHandler_Process_BookingcomHttpResultParametersProcess_ClearSecureData()
         {
             //ARRANGE
-            IHttpResult bookingcomHttpHandler = new BookingcomHttpResult();
+            IHttpResultDataHandler bookingcomHttpHandler = new BookingcomHttpResultDataHandler();
             HttpLogHandler httpLogHandler = new HttpLogHandler(bookingcomHttpHandler);
 
             var data = new HttpResult

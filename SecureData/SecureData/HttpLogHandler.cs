@@ -9,9 +9,9 @@ namespace SecureData
     public class HttpLogHandler
     {
         protected HttpResult _currentLog;
-        protected IHttpResult _handler;
+        protected IHttpResultDataHandler _handler;
 
-        public HttpLogHandler(IHttpResult handler)
+        public HttpLogHandler(IHttpResultDataHandler handler)
         {
             _handler = handler;
         }

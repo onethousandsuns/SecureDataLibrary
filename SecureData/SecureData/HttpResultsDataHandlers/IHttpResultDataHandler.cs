@@ -7,13 +7,13 @@ using SecureData.DataHandlers;
 
 namespace SecureData
 {
-    public abstract class IHttpResult
+    public abstract class IHttpResultDataHandler
     {
         protected IDataHandler UrlHandler { set; get; }
         protected IDataHandler RequestBodyHandler { set; get; }
         protected IDataHandler ResponseBodyHandler { set; get; }
 
-        public IHttpResult()
+        public IHttpResultDataHandler()
         {
             InitHandlers();
             InitProperties();
