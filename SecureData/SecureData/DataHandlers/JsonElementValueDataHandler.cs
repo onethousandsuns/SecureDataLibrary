@@ -8,10 +8,7 @@ namespace SecureData.DataHandlers
         public override string GetSecuredData(string data)
         {
             var serializer = new JavaScriptSerializer();
-            //dynamic dataDict = serializer.DeserializeObject(data);
             var dataDict = serializer.Deserialize<dynamic>(data);
-
-            string str = null;
             foreach (var key in Properties)
             {
                 if (dataDict.ContainsKey(key))

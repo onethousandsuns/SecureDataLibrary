@@ -54,6 +54,7 @@
     <Compile Include="DataHandlers\JsonElementValueDataHandlerTests.cs" />
     <Compile Include="DataHandlers\RestUrlDataHandlerTests.cs" />
     <Compile Include="DataHandlers\UrlGetRequestDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\XmlAttributeDataHandlerTests.cs" />
     <Compile Include="HttpLogHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
