@@ -19,8 +19,8 @@ namespace SecureData
             HttpResult result = new HttpResult
             {
                 Url = UrlHandler.GetSecuredData(httpRes.Url),
-                ResponseBody = UrlHandler.GetSecuredData(httpRes.ResponseBody),
-                RequestBody = UrlHandler.GetSecuredData(httpRes.RequestBody)
+                ResponseBody = ResponseBodyHandler.GetSecuredData(httpRes.ResponseBody),
+                RequestBody = RequestBodyHandler.GetSecuredData(httpRes.RequestBody)
             };
             return result;
         }
