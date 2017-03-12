@@ -54,6 +54,7 @@
     <Compile Include="DataHandlers\UrlGetRequestDataHandler.cs" />
     <Compile Include="DataHandlers\AbstractDataHandler.cs" />
     <Compile Include="DataHandlers\XmlAttributeDataHandler.cs" />
+    <Compile Include="DataHandlers\XmlDataHandler.cs" />
     <Compile Include="DataHandlers\XmlElementValueDataHandler.cs" />
     <Compile Include="HttpLogHandler.cs" />
     <Compile Include="HttpResult.cs" />
