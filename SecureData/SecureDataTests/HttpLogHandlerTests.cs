@@ -166,5 +166,45 @@ namespace SecureDataTests
 
             Assert.AreEqual(expectedResult, httpLogHandler.GetCurrentLog());
         }
+
+        [TestMethod()]
+        public void HttpLogHandler_Process_ExpediaHttpResultHandle_ClearSecureData()
+        {
+            //ARRANGE
+            var handler = new ExpediaHttpResultDataHandler();
+            HttpLogHandler httpLogHandler = new HttpLogHandler();
+
+            var data = new HttpResult
+            {
+                Url = "http://test.com/user/max/info",
+                RequestBody = @"
+                {
+                       user : ""max"",
+                       pass : ""123456""
+                }",
+                ResponseBody = @"
+                {
+                       user : {
+                             value : ""max""
+                       },
+                       pass : {
+                             value : ""123456""
+                       }
+                }"
+            };
+
+            //ACT
+            httpLogHandler.Process(data, handler);
+
+            //ASSERT
+            var expectedResult = new HttpResult
+            {
+                Url = "http://test.com/user/XXX/info",
+                RequestBody = "{\"user\":\"XXX\",\"pass\":\"XXXXXX\"}",
+                ResponseBody = "{\"user\":{\"value\":\"XXX\"},\"pass\":{\"value\":\"XXXXXX\"}}"
+            };
+
+            Assert.AreEqual(expectedResult, httpLogHandler.GetCurrentLog());
+        }
     }
 }
