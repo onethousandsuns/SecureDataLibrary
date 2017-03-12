@@ -14,7 +14,7 @@ namespace SecureData
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return Url.GetHashCode() ^ RequestBody.GetHashCode() ^ ResponseBody.GetHashCode();
         }
 
         public override bool Equals(object obj)
