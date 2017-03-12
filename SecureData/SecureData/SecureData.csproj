@@ -62,6 +62,7 @@
     <Compile Include="HttpResultsDataHandlers\AgodaHttpResultDataHandler.cs" />
     <Compile Include="HttpResultsDataHandlers\BookingcomHttpResultDataHandler.cs" />
     <Compile Include="HttpResultsDataHandlers\AbstractHttpResultDataHandler.cs" />
+    <Compile Include="HttpResultsDataHandlers\OstrovokHttpResultDataHandler.cs" />
     <Compile Include="HttpResultsDataHandlers\YandexHttpResultDataHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
