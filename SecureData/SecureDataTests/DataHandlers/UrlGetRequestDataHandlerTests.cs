@@ -12,39 +12,59 @@ namespace SecureData.DataHandlers.Tests
     public class UrlGetRequestDataHandlerTests
     {
         [TestMethod()]
-        public void UrlGetRequestDataHandlerTests_GetSecuredDataTest_Process_EmptySecuredProps_NonChangedResult()
+        public void UrlGetRequestDataHandler_GetSecuredData_EmptySecuredProps_NonChangedResult()
         {
+            //ARRANGE
             IDataHandler handler = new UrlGetRequestDataHandler();
             handler.properties = new string[] { };
 
-            Assert.AreEqual("http://test.com?user=max&pass=123456", handler.GetSecuredData("http://test.com?user=max&pass=123456"));
+            //ACT
+            var result = handler.GetSecuredData("http://test.com?user=max&pass=123456");
+
+            //ASSERT
+            Assert.AreEqual("http://test.com?user=max&pass=123456", result);
         }
 
         [TestMethod()]
-        public void UrlGetRequestDataHandlerTests_GetSecuredDataTest_Process_NonEmptySecuredProps_ParametresSecured()
+        public void UrlGetRequestDataHandler_GetSecuredData_NonEmptySecuredProps_ParametresSecured()
         {
+            //ARRANGE
             IDataHandler handler = new UrlGetRequestDataHandler();
             handler.properties = new string[] { "user", "pass" };
 
-            Assert.AreEqual("http://test.com?user=XXX&pass=XXXXXX", handler.GetSecuredData("http://test.com?user=max&pass=123456"));
+            //ACT
+            var result = handler.GetSecuredData("http://test.com?user=max&pass=123456");
+
+            //ASSERT
+            Assert.AreEqual("http://test.com?user=XXX&pass=XXXXXX", result);
         }
 
         [TestMethod()]
-        public void UrlGetRequestDataHandlerTests_GetSecuredDataTest_Process_SecuredPropsNotInRequest_NonChangedResult()
+        public void UrlGetRequestDataHandler_GetSecuredData_SecuredPropsNotInRequest_NonChangedResult()
         {
+            //ARRANGE
             IDataHandler handler = new UrlGetRequestDataHandler();
             handler.properties = new string[] { "first_name", "second_name" };
 
-            Assert.AreEqual("http://test.com?user=max&pass=123456", handler.GetSecuredData("http://test.com?user=max&pass=123456"));
+            //ACT
+            var result = handler.GetSecuredData("http://test.com?user=max&pass=123456");
+
+            //ASSERT
+            Assert.AreEqual("http://test.com?user=max&pass=123456", result);
         }
 
         [TestMethod()]
-        public void UrlGetRequestDataHandlerTests_GetSecuredDataTest_Process_SomePropsNotInRequest_ListedParametresSecured()
+        public void UrlGetRequestDataHandler_GetSecuredData_SomePropsNotInRequest_ListedParametresSecured()
         {
+            //ARRANGE
             IDataHandler handler = new UrlGetRequestDataHandler();
             handler.properties = new string[] { "user", "first_name" };
 
-            Assert.AreEqual("http://test.com?user=XXX&pass=123456", handler.GetSecuredData("http://test.com?user=max&pass=123456"));
+            //ACT
+            var result = handler.GetSecuredData("http://test.com?user=max&pass=123456");
+
+            //ASSERT
+            Assert.AreEqual("http://test.com?user=XXX&pass=123456", result);
         }
     }
 }

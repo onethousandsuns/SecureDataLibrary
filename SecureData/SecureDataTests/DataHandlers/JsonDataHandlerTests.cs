@@ -12,39 +12,59 @@ namespace SecureData.DataHandlers.Tests
     public class JsonDataHandlerTests
     {
         [TestMethod()]
-        public void JsonDataHandlerTests_GetSecuredDataTest_Process_EmptySecuredProps_NonChangedResult()
+        public void JsonDataHandler_GetSecuredData_EmptySecuredProps_NonChangedResult()
         {
+            //ARRANGE
             IDataHandler handler = new JsonDataHandler();
             handler.properties = new string[] {};
 
-            Assert.AreEqual("{\"user\":\"maxim\",\"pass\":\"123\"}", handler.GetSecuredData("{user: \"maxim\", pass:\"123\"}"));
+            //ACT
+            var result = handler.GetSecuredData("{user: \"maxim\", pass:\"123\"}");
+
+            //ASSERT
+            Assert.AreEqual("{\"user\":\"maxim\",\"pass\":\"123\"}", result);
         }
 
         [TestMethod()]
-        public void JsonDataHandlerTests_GetSecuredDataTest_Process_NonEmptySecuredProps_ParametresSecured()
+        public void JsonDataHandler_GetSecuredData_NonEmptySecuredProps_ParametresSecured()
         {
+            //ARRANGE
             IDataHandler handler = new JsonDataHandler();
             handler.properties = new string[] { "user", "pass" };
 
-            Assert.AreEqual("{\"user\":\"XXXXX\",\"pass\":\"XXX\"}", handler.GetSecuredData("{user: \"maxim\", pass:\"123\"}"));
+            //ACT
+            var result = handler.GetSecuredData("{user: \"maxim\", pass:\"123\"}");
+
+            //ASSERT
+            Assert.AreEqual("{\"user\":\"XXXXX\",\"pass\":\"XXX\"}", result);
         }
 
         [TestMethod()]
-        public void JsonDataHandlerTests_GetSecuredDataTest_Process_SecuredPropsNotInRequest_NonChangedResult()
+        public void JsonDataHandler_GetSecuredData_SecuredPropsNotInRequest_NonChangedResult()
         {
+            //ARRANGE
             IDataHandler handler = new JsonDataHandler();
             handler.properties = new string[] { "first_name", "second_name" };
 
-            Assert.AreEqual("{\"user\":\"maxim\",\"pass\":\"123\"}", handler.GetSecuredData("{user: \"maxim\", pass:\"123\"}"));
+            //ACT
+            var result = handler.GetSecuredData("{user: \"maxim\", pass:\"123\"}");
+
+            //ASSERT
+            Assert.AreEqual("{\"user\":\"maxim\",\"pass\":\"123\"}", result);
         }
 
         [TestMethod()]
-        public void JsonDataHandlerTests_GetSecuredDataTest_Process_SomePropsNotInRequest_ListedParametresSecured()
+        public void JsonDataHandler_GetSecuredData_SomePropsNotInRequest_ListedParametresSecured()
         {
+            //ARRANGE
             IDataHandler handler = new JsonDataHandler();
             handler.properties = new string[] { "user", "first_name" };
 
-            Assert.AreEqual("{\"user\":\"XXXXX\",\"pass\":\"123\"}", handler.GetSecuredData("{user: \"maxim\", pass:\"123\"}"));
+            //ACT
+            var result = handler.GetSecuredData("{user: \"maxim\", pass:\"123\"}");
+
+            //ASSERT
+            Assert.AreEqual("{\"user\":\"XXXXX\",\"pass\":\"123\"}", result);
         }
 
     }
