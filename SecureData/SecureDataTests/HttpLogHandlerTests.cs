@@ -17,7 +17,7 @@ namespace SecureData.Tests
         {
             //ARRANGE
             IHttpResultDataHandler bookingcomHttpHandler = new BookingcomHttpResultDataHandler();
-            HttpLogHandler httpLogHandler = new HttpLogHandler(bookingcomHttpHandler);
+            HttpLogHandler httpLogHandler = new HttpLogHandler();
 
             var data = new HttpResult
             {
@@ -27,7 +27,7 @@ namespace SecureData.Tests
             };
 
             //ACT
-            httpLogHandler.Process(data);
+            httpLogHandler.Process(data, bookingcomHttpHandler);
 
             //ASSERT
             var expectedResult = new HttpResult
@@ -45,7 +45,7 @@ namespace SecureData.Tests
         {
             //ARRANGE
             IHttpResultDataHandler bookingcomHttpHandler = new BookingcomHttpResultDataHandler();
-            HttpLogHandler httpLogHandler = new HttpLogHandler(bookingcomHttpHandler);
+            HttpLogHandler httpLogHandler = new HttpLogHandler();
 
             var data = new HttpResult
             {
@@ -55,7 +55,7 @@ namespace SecureData.Tests
             };
 
             //ACT
-            httpLogHandler.Process(data.Url, data.RequestBody, data.ResponseBody);
+            httpLogHandler.Process(data.Url, data.RequestBody, data.ResponseBody, bookingcomHttpHandler);
 
             //ASSERT
             var expectedResult = new HttpResult

@@ -9,26 +9,20 @@ namespace SecureData
     public class HttpLogHandler
     {
         protected HttpResult _currentLog;
-        protected IHttpResultDataHandler _handler;
-
-        public HttpLogHandler(IHttpResultDataHandler handler)
-        {
-            _handler = handler;
-        }
 
         public HttpResult GetCurrentLog()
         {
             return _currentLog;
         }
         
-        public void Process(HttpResult httpResult)
+        public void Process(HttpResult httpResult, IHttpResultDataHandler handler)
         {
             var securedHttpResult = new HttpResult();
-            securedHttpResult = _handler.GetSecuredResult(httpResult);
+            securedHttpResult = handler.GetSecuredResult(httpResult);
             Log(securedHttpResult);
         }
 
-        public void Process(string url, string req, string res)
+        public void Process(string url, string req, string res, IHttpResultDataHandler handler)
         {
             var httpResult = new HttpResult
             {
@@ -37,7 +31,7 @@ namespace SecureData
                 ResponseBody = res
             };
 
-            Process(httpResult);
+            Process(httpResult, handler);
         }
 
         protected void Log(HttpResult result)
