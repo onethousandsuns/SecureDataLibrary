@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataHandlers\JsonDataHandler.cs" />
+    <Compile Include="DataHandlers\JsonElementValueDataHandler.cs" />
     <Compile Include="DataHandlers\RestUrlDataHandler.cs" />
     <Compile Include="DataHandlers\UrlGetRequestDataHandler.cs" />
     <Compile Include="DataHandlers\AbstractDataHandler.cs" />
