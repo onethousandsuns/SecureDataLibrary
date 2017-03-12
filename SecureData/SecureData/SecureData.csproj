@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{00735B63-943A-4F08-AF56-26F067C79711}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SecureData</RootNamespace>
     <AssemblyName>SecureData</AssemblyName>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,9 +54,8 @@
     <Compile Include="DataHandlers\IDataHandler.cs" />
     <Compile Include="HttpLogHandler.cs" />
     <Compile Include="HttpResult.cs" />
-    <Compile Include="HttpResults\BookingcomHttpResult.cs" />
-    <Compile Include="HttpResults\IHttpResult.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="HttpResultsDataHandlers\BookingcomHttpResultDataHandler.cs" />
+    <Compile Include="HttpResultsDataHandlers\IHttpResultDataHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
