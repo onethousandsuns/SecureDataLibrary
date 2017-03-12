@@ -126,5 +126,45 @@ namespace SecureDataTests
 
             Assert.AreEqual(expectedResult, httpLogHandler.GetCurrentLog());
         }
+
+        [TestMethod()]
+        public void HttpLogHandler_Process_GoogleHttpResultHandle_ClearSecureData()
+        {
+            //ARRANGE
+            var handler = new GoogleHttpResultDataHandler();
+            var httpLogHandler = new HttpLogHandler();
+
+            var data = new HttpResult
+            {
+                Url = "http://test.com?user=max&pass=123456",
+                RequestBody = @"
+                    <auth user=""max"">
+                        <pass>123456</pass>
+                    </auth>",
+                ResponseBody = @"
+                    <auth pass=""123456"">
+                        <user>max</user>
+                    </auth>"
+            };
+
+            //ACT
+            httpLogHandler.Process(data, handler);
+
+            //ASSERT
+            var expectedResult = new HttpResult
+            {
+                Url = "http://test.com?user=XXX&pass=XXXXXX",
+                RequestBody = @"
+                    <auth user=""XXX"">
+                        <pass>XXXXXX</pass>
+                    </auth>",
+                ResponseBody = @"
+                    <auth pass=""XXXXXX"">
+                        <user>XXX</user>
+                    </auth>"
+            };
+
+            Assert.AreEqual(expectedResult, httpLogHandler.GetCurrentLog());
+        }
     }
 }
