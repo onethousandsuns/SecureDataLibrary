@@ -2,7 +2,7 @@
 
 namespace SecureData.DataHandlers
 {
-    public class XmlAttributeDataHandler: AbstractDataHandler
+    public class XmlElementValueDataHandler : AbstractDataHandler
     {
         public override string GetSecuredData(string data)
         {
@@ -10,8 +10,8 @@ namespace SecureData.DataHandlers
 
             foreach (var key in Properties)
             {
-                var xmlAttrRegex = new Regex("(?<=\\b" + key + "=\")[^\"]*");
-                result = xmlAttrRegex.Replace(result, new string('X', xmlAttrRegex.Match(result).Length));
+                var xmlElemValueRegex = new Regex("(?<=<" + key + ">).+?(?=</" + key + ">)");
+                result = xmlElemValueRegex.Replace(result, new string('X', xmlElemValueRegex.Match(result).Length));
             }
             return result;
         }
