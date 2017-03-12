@@ -8,7 +8,6 @@ using SecureData.DataHandlers;
 
 namespace SecureData.HttpResultsDataHandlers
 {
-    public class BookingcomHttpResultDataHandler : IHttpResultDataHandler
     {
         protected override void InitHandlers()
         {

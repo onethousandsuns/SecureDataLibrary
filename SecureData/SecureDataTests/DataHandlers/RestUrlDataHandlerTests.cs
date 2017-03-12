@@ -15,7 +15,7 @@ namespace SecureData.DataHandlers.Tests
         public void RestUrlDataHandler_GetSecuredData_EmptySecuredProps_NonChangedResult()
         {           
             //ARRANGE
-            IDataHandler handler = new RestUrlDataHandler();
+            AbstractDataHandler handler = new RestUrlDataHandler();
             handler.properties = new string[] { };
 
             //ACT
@@ -29,7 +29,7 @@ namespace SecureData.DataHandlers.Tests
         public void RestUrlDataHandler_GetSecuredData_NonEmptySecuredProps_ParametresSecured()
         {
             //ARRANGE
-            IDataHandler handler = new RestUrlDataHandler();
+            AbstractDataHandler handler = new RestUrlDataHandler();
             handler.properties = new string[] { "user", "pass" };
 
             //ACT
@@ -43,7 +43,7 @@ namespace SecureData.DataHandlers.Tests
         public void RestUrlDataHandler_GetSecuredData_SecuredPropsNotInRequest_NonChangedResult()
         {           
             //ARRANGE
-            IDataHandler handler = new RestUrlDataHandler();
+            AbstractDataHandler handler = new RestUrlDataHandler();
             handler.properties = new string[] { "first_name", "second_name" };
 
             //ACT
@@ -57,7 +57,7 @@ namespace SecureData.DataHandlers.Tests
         public void RestUrlDataHandler_GetSecuredData_SomePropsNotInRequest_ListedParametresSecured()
         {
             //ARRANGE
-            IDataHandler handler = new RestUrlDataHandler();
+            AbstractDataHandler handler = new RestUrlDataHandler();
             handler.properties = new string[] { "user", "first_name" };
 
             //ACT

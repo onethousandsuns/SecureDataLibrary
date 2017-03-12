@@ -15,14 +15,14 @@ namespace SecureData
             return _currentLog;
         }
         
-        public void Process(HttpResult httpResult, IHttpResultDataHandler handler)
+        public void Process(HttpResult httpResult, AbstractHttpResultDataHandler handler)
         {
             var securedHttpResult = new HttpResult();
             securedHttpResult = handler.GetSecuredResult(httpResult);
             Log(securedHttpResult);
         }
 
-        public void Process(string url, string req, string res, IHttpResultDataHandler handler)
+        public void Process(string url, string req, string res, AbstractHttpResultDataHandler handler)
         {
             var httpResult = new HttpResult
             {

@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 
 namespace SecureData.DataHandlers
 {
-    public class JsonDataHandler : IDataHandler
+    public class JsonDataHandler : AbstractDataHandler
     {
         public override string GetSecuredData(string data)
         {
