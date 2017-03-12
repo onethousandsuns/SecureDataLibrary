@@ -1,13 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SecureData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SecureData.HttpResultsDataHandlers;
 
-namespace SecureData.Tests
+namespace SecureDataTests
 {
     [TestClass()]
     public class HttpLogHandlerTests
@@ -16,7 +11,7 @@ namespace SecureData.Tests
         public void HttpLogHandler_Process_BookingcomHttpResultObjectProcess_ClearSecureData()
         {
             //ARRANGE
-            IHttpResultDataHandler bookingcomHttpHandler = new BookingcomHttpResultDataHandler();
+            AbstractHttpResultDataHandler bookingcomHttpHandler = new BookingcomHttpResultDataHandler();
             HttpLogHandler httpLogHandler = new HttpLogHandler();
 
             var data = new HttpResult
@@ -44,7 +39,7 @@ namespace SecureData.Tests
         public void HttpLogHandler_Process_BookingcomHttpResultParametersProcess_ClearSecureData()
         {
             //ARRANGE
-            IHttpResultDataHandler bookingcomHttpHandler = new BookingcomHttpResultDataHandler();
+            AbstractHttpResultDataHandler bookingcomHttpHandler = new BookingcomHttpResultDataHandler();
             HttpLogHandler httpLogHandler = new HttpLogHandler();
 
             var data = new HttpResult

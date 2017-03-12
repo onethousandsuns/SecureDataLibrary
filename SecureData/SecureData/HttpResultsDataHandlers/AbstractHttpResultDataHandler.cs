@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SecureData.DataHandlers;
+﻿using SecureData.DataHandlers;
 
 namespace SecureData
 {
@@ -32,9 +27,9 @@ namespace SecureData
 
         protected void InitProperties(string[] securedProps)
         {
-            UrlHandler.properties = securedProps;
-            RequestBodyHandler.properties = securedProps;
-            ResponseBodyHandler.properties = securedProps;
+            UrlHandler.Properties = securedProps;
+            RequestBodyHandler.Properties = securedProps;
+            ResponseBodyHandler.Properties = securedProps;
         }
 
         protected abstract void InitProperties();

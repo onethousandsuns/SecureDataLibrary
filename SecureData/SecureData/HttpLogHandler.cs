@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SecureData
+﻿namespace SecureData
 {
     public class HttpLogHandler
     {
-        protected HttpResult _currentLog;
+        protected HttpResult CurrentLog;
 
         public HttpResult GetCurrentLog()
         {
-            return _currentLog;
+            return CurrentLog;
         }
         
         public void Process(HttpResult httpResult, AbstractHttpResultDataHandler handler)
         {
-            var securedHttpResult = new HttpResult();
-            securedHttpResult = handler.GetSecuredResult(httpResult);
+            var securedHttpResult = handler.GetSecuredResult(httpResult);
             Log(securedHttpResult);
         }
 
@@ -36,7 +29,7 @@ namespace SecureData
 
         protected void Log(HttpResult result)
         {
-            _currentLog = new HttpResult
+            CurrentLog = new HttpResult
             {
                 Url = result.Url,
                 RequestBody = result.RequestBody,

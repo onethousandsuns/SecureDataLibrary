@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SecureData.DataHandlers
+﻿namespace SecureData.DataHandlers
 {
-    public abstract class IDataHandler
+    public abstract class AbstractDataHandler
     {
         public abstract string GetSecuredData(string data);
 
-        public string[] properties { get; set; }
+        public string[] Properties { get; set; }
     }
 }

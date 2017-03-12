@@ -1,33 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-
-namespace SecureData.DataHandlers
+﻿namespace SecureData.DataHandlers
 {
     public class RestUrlDataHandler : AbstractDataHandler
     {
         public override string GetSecuredData(string data)
         {
-            string[] splitedUrl = data.Split('/');
+            var splitedUrl = data.Split('/');
             
-            foreach (string key in properties)
+            foreach (var key in Properties)
             {
-                for (int i = 0; i < splitedUrl.Length; i++)
+                for (var i = 0; i < splitedUrl.Length; i++)
                 {
                     if((splitedUrl[i] == key) && (i != splitedUrl.Length - 1))
                     {
-                        splitedUrl[i + 1] = new String('X', splitedUrl[i + 1].Length);
+                        splitedUrl[i + 1] = new string('X', splitedUrl[i + 1].Length);
                         i++;
                     }
                 }
             }
 
-            UrlGetRequestDataHandler urlDataHandler = new UrlGetRequestDataHandler();
-            urlDataHandler.properties = this.properties;
-            return urlDataHandler.GetSecuredData(String.Join("/", splitedUrl));
+            var urlDataHandler = new UrlGetRequestDataHandler
+            {
+                Properties = this.Properties
+            };
+            return urlDataHandler.GetSecuredData(string.Join("/", splitedUrl));
         }
     }
 }

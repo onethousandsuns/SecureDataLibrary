@@ -1,12 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SecureData.DataHandlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SecureData.DataHandlers.Tests
+namespace SecureDataTests.DataHandlers
 {
     [TestClass()]
     public class RestUrlDataHandlerTests
@@ -16,7 +11,7 @@ namespace SecureData.DataHandlers.Tests
         {           
             //ARRANGE
             AbstractDataHandler handler = new RestUrlDataHandler();
-            handler.properties = new string[] { };
+            handler.Properties = new string[] { };
 
             //ACT
             var result = handler.GetSecuredData("http://test.com/user/max/info?pass=123456");
@@ -30,7 +25,7 @@ namespace SecureData.DataHandlers.Tests
         {
             //ARRANGE
             AbstractDataHandler handler = new RestUrlDataHandler();
-            handler.properties = new string[] { "user", "pass" };
+            handler.Properties = new string[] { "user", "pass" };
 
             //ACT
             var result = handler.GetSecuredData("http://test.com/user/max/info?pass=123456");
@@ -44,7 +39,7 @@ namespace SecureData.DataHandlers.Tests
         {           
             //ARRANGE
             AbstractDataHandler handler = new RestUrlDataHandler();
-            handler.properties = new string[] { "first_name", "second_name" };
+            handler.Properties = new string[] { "first_name", "second_name" };
 
             //ACT
             var result = handler.GetSecuredData("http://test.com/user/max/info?pass=123456");
@@ -58,7 +53,7 @@ namespace SecureData.DataHandlers.Tests
         {
             //ARRANGE
             AbstractDataHandler handler = new RestUrlDataHandler();
-            handler.properties = new string[] { "user", "first_name" };
+            handler.Properties = new string[] { "user", "first_name" };
 
             //ACT
             var result = handler.GetSecuredData("http://test.com/user/max/info?pass=123456");
