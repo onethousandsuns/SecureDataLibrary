@@ -66,6 +66,7 @@ namespace SecureData
                     return new JsonDataHandler();
                 case "JSON_ELEM":
                     return new JsonElementValueDataHandler();
+                case "URL_REST":
                     return new RestUrlDataHandler();
                 case "URL_GET":
                     return new UrlGetRequestDataHandler();

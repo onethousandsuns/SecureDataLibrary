@@ -1,4 +1,4 @@
-﻿using SecureData.DataHandlers;
+﻿using System.Collections.Generic;
 
 namespace SecureData.HttpResultsDataHandlers
 {
@@ -6,14 +6,10 @@ namespace SecureData.HttpResultsDataHandlers
     {
         protected override void InitProperties()
         {
-            InitProperties(new string[] { "user", "pass" });
-        }
-
-        protected override void InitHandlers()
-        {
-            UrlHandler = new RestUrlDataHandler();
-            RequestBodyHandler = new JsonDataHandler();
-            ResponseBodyHandler = new JsonElementValueDataHandler();
+            InitProperties(
+                new Dictionary<string, string> { { "user", "URL_REST" }, { "pass", "URL_REST" } },
+                new Dictionary<string, string> { { "user", "JSON_DATA" }, { "pass", "JSON_DATA" } },
+                new Dictionary<string, string> { { "user", "JSON_ELEM" }, { "pass", "JSON_ELEM" } });
         }
     }
 }

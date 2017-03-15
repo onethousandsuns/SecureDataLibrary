@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SecureData.DataHandlers;
+﻿using System.Collections.Generic;
 
 namespace SecureData.HttpResultsDataHandlers
 {
@@ -11,14 +6,10 @@ namespace SecureData.HttpResultsDataHandlers
     {
         protected override void InitProperties()
         {
-            InitProperties(new string[] { "user", "pass" });
-        }
-
-        protected override void InitHandlers()
-        {
-            UrlHandler = new UrlGetRequestDataHandler();
-            RequestBodyHandler = new XmlElementValueDataHandler();
-            ResponseBodyHandler = new XmlAttributeDataHandler();
+            InitProperties(
+                new Dictionary<string, string> { { "user", "URL_GET" }, { "pass", "URL_GET" } },
+                new Dictionary<string, string> { { "user", "XML_ELEM" }, { "pass", "XML_ELEM" } },
+                new Dictionary<string, string> { { "user", "XML_ATTR" }, { "pass", "XML_ATTR" } });
         }
     }
 }
