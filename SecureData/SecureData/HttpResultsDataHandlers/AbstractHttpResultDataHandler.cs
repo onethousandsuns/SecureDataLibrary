@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SecureData.DataHandlers;
 
@@ -8,12 +9,15 @@ namespace SecureData
 
     public abstract class AbstractHttpResultDataHandler
     {
+        protected Dictionary<string, AbstractDataHandler> Handlers { get; set; }
         protected Dictionary<string, configParam> Properties { get; set; }
 
         protected AbstractHttpResultDataHandler()
         {
             Properties = new Dictionary<string, configParam>();
+            Handlers = new Dictionary<string, AbstractDataHandler>();
             InitProperties();
+            InitLibraryHandlers();
         }
 
         public HttpResult GetSecuredResult(HttpResult httpRes)
@@ -60,23 +64,14 @@ namespace SecureData
 
         protected AbstractDataHandler GetHandlerByTag(string tag)
         {
-            switch (tag)
+            if (!Handlers.ContainsKey(tag))
             {
-                case "JSON_DATA":
-                    return new JsonDataHandler();
-                case "JSON_ELEM":
-                    return new JsonElementValueDataHandler();
-                case "URL_REST":
-                    return new RestUrlDataHandler();
-                case "URL_GET":
-                    return new UrlGetRequestDataHandler();
-                case "XML_ATTR":
-                    return new XmlAttributeDataHandler();
-                case "XML_ELEM":
-                    return new XmlElementValueDataHandler();
+                throw new HandlerNotExistException("Handler with tag \"" + tag + "\" not exists.");
             }
-            return null;
+            return Handlers[tag];
         }
+
+        public Exception HandlerNotExistException { get; set; }
 
         protected void InitProperties(configParam urlProps, configParam requestProps, configParam responseProps)
         {
@@ -86,5 +81,39 @@ namespace SecureData
         }
 
         protected virtual void InitProperties(){ }
+
+        private void InitLibraryHandlers()
+        {
+            Handlers.Add("JSON_DATA", new JsonDataHandler());
+            Handlers.Add("JSON_ELEM", new JsonElementValueDataHandler());
+            Handlers.Add("URL_REST", new RestUrlDataHandler());
+            Handlers.Add("URL_GET", new UrlGetRequestDataHandler());
+            Handlers.Add("XML_ATTR", new XmlAttributeDataHandler());
+            Handlers.Add("XML_ELEM", new XmlElementValueDataHandler());
+        }
+
+        protected void AddUserDataHandler(string tag, AbstractDataHandler handler)
+        {
+            if (!Handlers.ContainsKey(tag))
+            {
+                throw new HandlerAlreadyExistException("Handler with tag \"" + tag + "\" already exists.");
+            }
+            Handlers.Add(tag, handler);
+        }
+
+    }
+
+    public class HandlerAlreadyExistException : Exception
+    {
+        public HandlerAlreadyExistException(string message) : base(message)
+        {
+        }
+    }
+
+    public class HandlerNotExistException : Exception
+    {
+        public HandlerNotExistException(string message) : base(message)
+        {
+        }
     }
 }
