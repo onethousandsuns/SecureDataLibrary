@@ -52,6 +52,12 @@
   <ItemGroup>
     <Compile Include="DataHandlers\JsonDataHandlerTests.cs" />
     <Compile Include="DataHandlers\JsonElementValueDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\JsonElementKeyValueDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\JsonKeyValueDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\RestUrlKeyValueDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\UrlGetKeyValueDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\XmlAttributeKeyValueDataHandlerTests.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\XmlElementKeyValueDataHandlerTests.cs" />
     <Compile Include="DataHandlers\RegexDataHandlerTests.cs" />
     <Compile Include="DataHandlers\RestUrlDataHandlerTests.cs" />
     <Compile Include="DataHandlers\UrlGetRequestDataHandlerTests.cs" />
