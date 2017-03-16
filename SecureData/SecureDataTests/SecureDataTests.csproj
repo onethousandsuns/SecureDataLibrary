@@ -66,6 +66,7 @@
     <Compile Include="DataHandlers\XmlAttributeDataHandlerTests.cs" />
     <Compile Include="DataHandlers\XmlDataHandlerTests.cs" />
     <Compile Include="DataHandlers\XmlElementValueDataHandlerTests.cs" />
+    <Compile Include="HandlersThreadSafetyTests.cs" />
     <Compile Include="HttpLogHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HandlersSpeedCompareTests.cs" />
