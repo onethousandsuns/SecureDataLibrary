@@ -50,6 +50,13 @@
   <ItemGroup>
     <Compile Include="DataHandlers\JsonDataHandler.cs" />
     <Compile Include="DataHandlers\JsonElementValueDataHandler.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\AbstractKeyValueDataHandler.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\JsonElementKeyValueDataHandler.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\JsonKeyValueDataHandler.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\RestUrlKeyValueDataHandler.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\UrlGetKeyValueDataHandler.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\XmlAttributeKeyValueDataHandler.cs" />
+    <Compile Include="DataHandlers\KeyValueDataHandlers\XmlElementKeyValueDataHandler.cs" />
     <Compile Include="DataHandlers\RegexDataHandler.cs" />
     <Compile Include="DataHandlers\RestUrlDataHandler.cs" />
     <Compile Include="DataHandlers\UrlGetRequestDataHandler.cs" />
@@ -71,6 +78,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
